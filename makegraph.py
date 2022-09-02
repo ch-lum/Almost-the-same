@@ -36,7 +36,6 @@ def all_but_one(start):
 G = nx.Graph()
 G.add_nodes_from(fourLetters)
 
-count = 0
 for word in fourLetters:
     edges = []
     similar = all_but_one(word)
@@ -44,14 +43,6 @@ for word in fourLetters:
         edges.append(tuple([word, child]))
 
     G.add_edges_from(edges)
-    count += 1
-    if count % 30 == 0:
-        print(count)
-
-#print(nx.shortest_path(G, source=SOURCE, target=TARGET))
 
 #To .graphml file
 nx.write_graphml(G, str(LETTERS) + 'words.graphml')
-
-#nx.draw_networkx(G)
-#plt.show()
